@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bored!</title>
+</head>
+<body>
+    <script>
+        function sleep(ms) {
+            // Somehow js still doesn't have a sleep function, so here's one
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        let canvasX = window.innerWidth - 30
+        let canvasY = window.innerHeight - 30
+        function preload() {
+            // Loads the egg image, to use it create an image object with it as the first variable
+            // i.e. image(eggImg, x, y) or image(eggImg, x, y, width, height)
+            eggImg = loadImage('/static/img/egg.svg');
+        }
+    function setup() {
+        createCanvas(canvasX, canvasY);
+        imageMode(CENTER); // Make all positions relative to the center of the egg, not the corner
+    }
+
+    function draw() {
+        // Reset canvas coordinates for mobile support
+        canvasX = window.innerWidth - 30
+        canvasY = window.innerHeight - 30
+        // Draw white background
+        background(255);
+        // Draw initial image
+        image(eggImg, canvasX/2, canvasY/2)
+
+    }
+
+    function mousePressed() { 
+        // Function is called every time the mouse is pressed
+
+        // Reset canvas size to fix if window has been resized
+        canvasX = window.innerWidth - 30
+        canvasY = window.innerHeight - 30
+        if ( 
+            (mouseX >= canvasX/2-250 && mouseX <= canvasX/2+250) 
+            && 
+            (mouseY >= canvasY/2-250 && mouseY <= canvasY/2+250)
+            ){ // They clicked the egg
+            noLoop(); // Stop looping draw() and begin animations
+            beginSelection()
+        }
+    }
+
+    function beginSelection(){
+        // Clear screen
+        background(255);
+        // Draw initial image
+        width = 500; // Initial width of image
+        height = 500;// Initial height of image
+        egg = image(eggImg, canvasX/2, canvasY/2);
+
+        // TODO Shrink egg (animated)
+
+        // TODO Show restaurant options, should be 12 options each 30 degrees appart (i.e. 0, 30, 60 degrees etc.)
+
+
+        sleep(11000) // Wait 11 seconds to call spin function
+        spin()
+    }
+
+    function spin(){ // The animation for the spin
+        // Clear screen
+        background(255);
+
+        // Draw initial image
+        width = 500;  // Initial width of image, will be last size of beginSelection()
+        height = 500; // Initial height of image, will be last size of beginSelection()
+        egg = image(eggImg, canvasX/2, canvasY/2, width, height);
+
+        // Move on to show result
+        showResult()
+    }
+
+    function showResult(){ // Function to show the result of the spin
+
+        // Will need to figure out the rotation of the egg at end of spin
+    }
+    </script>
+</body>
+
+<!-- Import P5.js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js" integrity="sha512-rCZdHNB0AePry6kAnKAVFMRfWPmUXSo+/vlGtrOUvhsxD0Punm/xWbEh+8vppPIOzKB9xnk42yCRZ5MD/jvvjQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</html>
