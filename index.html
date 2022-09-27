@@ -1,32 +1,53 @@
 <!DOCTYPE html>
-<html><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Restaurants Selector</title>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Bored!</title>
     <link href="static/style.css" rel="stylesheet" type="text/css">
   </head>
-  <body> 
-  <div id="mainbox" class="mainbox">
-    <div id="box" class="box animate">
-      <div class="box1">
-        <span class="span1"><b>OEB</b></span>
-        <span class="span2"><b>ZCREW</b></span>
-        <span class="span3"><b>Benny's</b></span>
-        <span class="span4"><b>Brekkie</b></span>
+  <body>
+    <div id="mainbox" class="mainbox">
+      <div id="box" class="box animate">
+        <div class="box1">
+          <span class="span1"><b>OEB</b></span>
+          <span class="span2"><b>ZCREW</b></span>
+          <span class="span3"><b>Benny's</b></span>
+          <span class="span4"><b>Brekkie</b></span>
+        </div>
+        <div class="box2">
+          <span class="span1"><b>Phil's</b></span>
+          <span class="span2"><b>Denny's</b></span>
+          <span class="span3"><b>Cora</b></span>
+          <span class="span4"><b>IHOP</b></span>
+        </div>
       </div>
-      <div class="box2">
-        <span class="span1"><b>Phil's</b></span>
-        <span class="span2"><b>Denny's</b></span>
-        <span class="span3"><b>Cora</b></span>
-        <span class="span4"><b>IHOP</b></span>
-                
+      <div>
+        <img src="static/egg.svg" style="width:70px;height:80px;" class="spin" onclick="rotateFunction()" id="egg">
       </div>
-      
-    </div> 
-    <div> 
-      
-     <img src="static/egg.svg" style="width:70px;height:80px;" class="spin" onclick="rotateFunction()" id="egg"> 
-    </div>  
-  </div>
-  <script src="static/script.js"></script>
-  
-</body></html>
+    </div>
+    <div id="dialogSpace">
+      <dialog id="restaurant">
+        <form method="dialog">
+          <h1>You Got:</h1>
+          <p id="name"></p>
+          <menu>
+            <button onclick="window.info.show();">Information</button>
+            <form action="" target="_blank">
+              <button id="directions">Directions</button>
+            </form>
+            <button onclick="location.reload()">Spin Again</button>
+          </menu>
+        </form>
+      </dialog>
+    </div>
+    <div id="dialogSpace2">
+      <dialog id="info">
+        <form method="dialog">
+          <p id="information"></p>
+          <button onclick="keepDialogOpen()">Close</button>
+        </form>
+      </dialog>
+    </div>
+    <script src="static/script.js"></script>
+  </body>
+</html>
