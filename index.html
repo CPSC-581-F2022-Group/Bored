@@ -1,32 +1,145 @@
 <!DOCTYPE html>
-<html><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Restaurants Selector</title>
-    <link href="static/style.css" rel="stylesheet" type="text/css">
-  </head>
-  <body> 
-  <div id="mainbox" class="mainbox">
-    <div id="box" class="box animate">
-      <div class="box1">
-        <span class="span1"><b>OEB</b></span>
-        <span class="span2"><b>ZCREW</b></span>
-        <span class="span3"><b>Benny's</b></span>
-        <span class="span4"><b>Brekkie</b></span>
-      </div>
-      <div class="box2">
-        <span class="span1"><b>Phil's</b></span>
-        <span class="span2"><b>Denny's</b></span>
-        <span class="span3"><b>Cora</b></span>
-        <span class="span4"><b>IHOP</b></span>
-                
-      </div>
-      
-    </div> 
-    <div> 
-      
-     <img src="static/egg.svg" style="width:70px;height:80px;" class="spin" onclick="rotateFunction()" id="egg"> 
-    </div>  
-  </div>
-  <script src="static/script.js"></script>
-  
-</body></html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <style>
+        .egg-div {
+            position: absolute;
+            top:0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width:20em;
+            height:20em;
+        }
+
+        @keyframes breath {
+            from{font-size:20em;}
+            to{font-size:19.7em;}
+        }
+
+        .breathe{
+            animation-name: breath;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-timing-function: ease-out;
+        }
+        .bi-activity{
+            position: absolute;
+            top: 124px;
+            left: 16px;
+            bottom: 0;
+            right: 0;
+            font-size:.7em;
+        }
+        .hidden{
+            display:none
+        }
+    </style>
+</head>
+<body>  
+    <div class="spacer" style="height:5vh"></div>
+    <div class="container">
+        <div class="col-md-12 text-center">
+            <h2>B<i class="bi bi-egg text-center"></i>red!</h2>
+            <h4>Breakfast in one crack!</h4>
+        </div>
+    </div>
+    <div class="container egg-div">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 id="notice">Crack the Egg</h2>
+            </div>
+            <div class="col-md-12 text-center">
+                <i id="egg" onmouseleave="stopBreathe()" onmouseover="breathe()" onclick="eggClick()" class="bi bi-egg text-center" style="font-size:20em">
+                    <i class="bi bi-activity hidden" id="eggCrack"></i>
+                </i>
+            </div>
+        </div>
+    </div>
+
+    <div id="result" class="container hidden" style="background-color:#f49500; ">
+        <div class="row">
+            <div class="col-md-2 spacer"></div>
+            <div class="col-md-8">
+                <div class="card text-center" style="background-color:#f49500; max-height:70vh">
+                    <img style="max-height:70vh" src="https://images.unsplash.com/photo-1525351484163-7529414344d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" class="card-img-top img-fluid" alt="...">
+                    <div class="card-body text-white" style="background-color:#f49500; ">
+                        <h5 class="card-title text-white" style="background-color:#f49500; ">Restaurant Name</h5>
+                        <p class="card-text text-white" style="background-color:#f49500; ">This is a description of the restaurant.</p>
+                        <a href="#" class="btn btn-dark"><i class="bi bi-geo-alt"></i>Directions</a>
+                        <a href="/" class="btn btn-dark">
+                            <i class="bi bi-egg text-center"></i> Go again
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 spacer"></div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    class Egg {
+        constructor() {
+            this.element = document.getElementById("egg");
+            this.health = 2
+        }
+
+        resize(size){
+            // Takes in a valid font-size measurement and resizes egg
+            this.element.style.fontSize = size
+        }
+        
+    }
+    // Create Egg instance to use as global variable
+    egg = new Egg()
+
+    async function sleep(ms) {
+        // Custom sleep function since somehow javascript still doesn't have one
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    function breathe(){
+        // A breathing animation for when people hover over the egg
+        if (egg.health == 2) {
+            egg.element.classList.add("breathe")
+        }
+    }
+    function stopBreathe(){
+        // A function to remove the breathing animation
+        egg.element.classList.remove("breathe")
+    }
+    async function eggClick(){
+        // click handler for the egg
+        if (egg.health == 2){
+            egg.health -= 1
+            // Remove breathing effect
+            stopBreathe()
+            // Show egg crack
+            document.getElementById("eggCrack").classList.remove("hidden")
+            // Change message
+            document.getElementById("notice").innerHTML = "Tip out the Yolk!"
+            await sleep(4000)
+
+            // TODO: animate this effect
+            document.getElementsByTagName("body")[0].style.backgroundColor = "#f49500"
+            document.getElementsByTagName("body")[0].style.color = "#FFF"
+
+            egg.element.classList.add("hidden")
+            document.getElementById("eggCrack").classList.add("hidden")
+            document.getElementById("result").classList.remove("hidden")
+
+        }
+    }
+</script>
+</html>
