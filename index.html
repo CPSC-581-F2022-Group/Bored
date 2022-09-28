@@ -90,11 +90,11 @@
             <div class="col-md-2 spacer"></div>
             <div class="col-md-8">
                 <div class="card text-center" style="background-color:#f49500; max-height:70vh">
-                    <img style="max-height:70vh" src="https://images.unsplash.com/photo-1525351484163-7529414344d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" class="card-img-top img-fluid" alt="...">
+                    <img style="max-height:70vh" id="restaurant-image" src="" class="card-img-top img-fluid" alt="...">
                     <div class="card-body text-white" style="background-color:#f49500; ">
-                        <h5 class="card-title text-white" style="background-color:#f49500; ">Restaurant Name</h5>
-                        <p class="card-text text-white" style="background-color:#f49500; ">This is a description of the restaurant.</p>
-                        <a href="#" class="btn btn-dark"><i class="bi bi-geo-alt"></i>Directions</a>
+                        <h5 class="card-title text-white" style="background-color:#f49500; " id="restaurant-name"></h5>
+                        <p class="card-text text-white" style="background-color:#f49500; "id="restaurant-description"></p>
+                        <a id="restaurant-directions" href="" class="btn btn-dark"><i class="bi bi-geo-alt"></i>Directions</a>
                         <a href="/" class="btn btn-dark">
                             <i class="bi bi-egg text-center"></i> Go again
                         </a>
@@ -122,6 +122,21 @@
     }
     // Create Egg instance to use as global variable
     egg = new Egg()
+
+    restaurants = [
+        {"name":"Brekkie",
+        "directions":"https://www.google.ca/maps/place/20+Westpark+Link+SW+%23130,+Calgary,+AB+T3H+0V5/@51.0605574,-114.2115466,17z/data=!3m1!4b1!4m5!3m4!1s0x53716c2a753ff4a7:0x375114afd83c8192!8m2!3d51.060554!4d-114.2093579",
+        "description":"Innovative takes on breakfast classics served in a bright, loftlike space with outdoor seating.",
+        "image":"https://images.unsplash.com/photo-1525351484163-7529414344d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+        },
+    ]
+
+    choice = restaurants[Math.floor(Math.random() * restaurants.length)]
+    
+    document.getElementById("restaurant-name").innerHTML = choice["name"]
+    document.getElementById("restaurant-description").innerHTML = choice["description"]
+    document.getElementById("restaurant-directions").href = choice["directions"]
+    document.getElementById("restaurant-image").src = choice["image"]
 
     async function sleep(ms) {
         // Custom sleep function since somehow javascript still doesn't have one
