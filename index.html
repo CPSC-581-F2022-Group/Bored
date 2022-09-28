@@ -33,6 +33,24 @@
             animation-direction: alternate;
             animation-timing-function: ease-out;
         }
+
+        @keyframes yolk {
+            0%{background: linear-gradient(300deg, #fff 100%, #f49500 100%);background-repeat: no-repeat;background-attachment: fixed;}
+            25%{background: linear-gradient(300deg, #fff 75%, #f49500 100%);background-repeat: no-repeat;background-attachment: fixed;}
+            50%{background: linear-gradient(300deg, #fff 50%, #f49500 100%);background-repeat: no-repeat;background-attachment: fixed;}
+            75%{background: linear-gradient(300deg, #fff 25%, #f49500 100%);background-repeat: no-repeat;background-attachment: fixed;}
+            90%{background: linear-gradient(300deg, #fff 1%, #f49500 100%);background-repeat: no-repeat;background-attachment: fixed;}
+            100%{background: linear-gradient(300deg, #f49500 0%, #f49500 100%);background-repeat: no-repeat;background-attachment: fixed;}
+            /*100%{background: #f49500}*/
+        }
+
+        .yolked{
+            animation-name: yolk;
+            animation-duration: .25s;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            animation-timing-function: ease-in-out;
+        }
         .bi-activity{
             position: absolute;
             top: 124px;
@@ -129,15 +147,28 @@
             document.getElementById("eggCrack").classList.remove("hidden")
             // Change message
             document.getElementById("notice").innerHTML = "Tip out the Yolk!"
-            await sleep(4000)
+            await sleep(2000)
 
             // TODO: animate this effect
-            document.getElementsByTagName("body")[0].style.backgroundColor = "#f49500"
-            document.getElementsByTagName("body")[0].style.color = "#FFF"
-
+            body = document.getElementsByTagName("body")[0]
+            body.classList.add("yolked")
+            await sleep(250)
+            body.classList.remove("yolked")
+            body.style.backgroundColor = "#f49500"
+            body.style.background = "#f49500"
+            body.style.color = "#fff"
             egg.element.classList.add("hidden")
+            body.style.backgroundColor = "#f49500"
+            body.style.background = "#f49500"
+            body.style.color = "#fff"
             document.getElementById("eggCrack").classList.add("hidden")
+            body.style.backgroundColor = "#f49500"
+            body.style.background = "#f49500"
+            body.style.color = "#fff"
             document.getElementById("result").classList.remove("hidden")
+            body.style.backgroundColor = "#f49500"
+            body.style.background = "#f49500"
+            body.style.color = "#fff"
 
         }
     }
