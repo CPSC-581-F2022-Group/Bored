@@ -149,22 +149,13 @@
             document.getElementById("notice").innerHTML = "Tip out the Yolk!"
             await sleep(2000)
 
-            // TODO: animate this effect
+            // Animation of yolk coming in, and image appearing
             body = document.getElementsByTagName("body")[0]
             body.classList.add("yolked")
-            await sleep(250)
+            await sleep(250) // Wait for yolk animation to finish
             body.classList.remove("yolked")
-            body.style.backgroundColor = "#f49500"
-            body.style.background = "#f49500"
-            body.style.color = "#fff"
             egg.element.classList.add("hidden")
-            body.style.backgroundColor = "#f49500"
-            body.style.background = "#f49500"
-            body.style.color = "#fff"
             document.getElementById("eggCrack").classList.add("hidden")
-            body.style.backgroundColor = "#f49500"
-            body.style.background = "#f49500"
-            body.style.color = "#fff"
             document.getElementById("result").classList.remove("hidden")
             body.style.backgroundColor = "#f49500"
             body.style.background = "#f49500"
