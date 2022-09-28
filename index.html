@@ -94,7 +94,7 @@
                     <div class="card-body text-white" style="background-color:#f49500; ">
                         <h5 class="card-title text-white" style="background-color:#f49500; " id="restaurant-name"></h5>
                         <p class="card-text text-white" style="background-color:#f49500; "id="restaurant-description"></p>
-                        <a id="restaurant-directions" href="" class="btn btn-dark"><i class="bi bi-geo-alt"></i>Directions</a>
+                        <a id="restaurant-directions" href="" target="_blank" class="btn btn-dark"><i class="bi bi-geo-alt"></i>Directions</a>
                         <a href="index.html" class="btn btn-dark">
                             <i class="bi bi-egg text-center"></i> Go again
                         </a>
@@ -124,11 +124,54 @@
     egg = new Egg()
 
     restaurants = [
-        {"name":"Brekkie",
-        "directions":"https://www.google.ca/maps/place/20+Westpark+Link+SW+%23130,+Calgary,+AB+T3H+0V5/@51.0605574,-114.2115466,17z/data=!3m1!4b1!4m5!3m4!1s0x53716c2a753ff4a7:0x375114afd83c8192!8m2!3d51.060554!4d-114.2093579",
-        "description":"Innovative takes on breakfast classics served in a bright, loftlike space with outdoor seating.",
-        "image":"https://images.unsplash.com/photo-1525351484163-7529414344d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+        {
+            "name":"Brekkie", 
+            "directions":"https://www.google.ca/maps/place/20+Westpark+Link+SW+%23130,+Calgary,+AB+T3H+0V5/@51.0605574,-114.2115466,17z/data=!3m1!4b1!4m5!3m4!1s0x53716c2a753ff4a7:0x375114afd83c8192!8m2!3d51.060554!4d-114.2093579",
+            "description":"Innovative takes on breakfast classics served in a bright, loftlike space with outdoor seating.",
+            "image":"https://images.unsplash.com/photo-1525351484163-7529414344d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
         },
+        {
+            "name":"Denny's", 
+            "directions":"https://www.google.ca/maps/place/2450+16+Ave+NW,+Calgary,+AB+T2M+0M5/@51.0674589,-114.1193578,17z/data=!3m1!4b1!4m5!3m4!1s0x53716fa362683aa5:0x160907ccf6556825!8m2!3d51.0674555!4d-114.1171691",
+            "description":"Casual diner chain dishing up classic American comfort fare, including all-day breakfast favorites.",
+            "image":"https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=898&q=80"
+        },
+        {
+            "name":"OEB", 
+            "directions":"https://www.google.ca/maps/place/4132+University+Ave+NW,+Calgary,+AB/@51.0779424,-114.1489247,17z/data=!3m1!4b1!4m5!3m4!1s0x53716f039a99c9fb:0xe48492ee137fc001!8m2!3d51.0779391!4d-114.146736",
+            "description":"Variations on eggs Benedict, French toast & waffles, plus burgers & mimosas, in a colorful space.",
+            "image":"https://images.unsplash.com/photo-1612182062572-e29c5dfb5eb4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+        },
+        {
+            "name":"IHOP", 
+            "directions":"https://www.google.ca/maps/place/901+64+Ave+NE+%234170,+Calgary,+AB+T2E+7P4/@51.1085766,-114.0413111,17z/data=!3m1!4b1!4m5!3m4!1s0x537165b3336993bf:0x7e86b829f548fa59!8m2!3d51.1085733!4d-114.0391224",
+            "description":"Long-standing chain serving a wide variety of pancakes & other American breakfast & diner fare.",
+            "image":"https://images.unsplash.com/photo-1619540158662-bb74607515f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=898&q=80"
+        },
+        {
+            "name":"Benny's", 
+            "directions":"https://www.google.ca/maps/place/7007+11+St+SE,+Calgary,+AB+T2H+2T9/@50.9907887,-114.0424683,17z/data=!3m1!4b1!4m5!3m4!1s0x537170ecde8f2cbf:0xb83ff199041c4dc!8m2!3d50.9907853!4d-114.0402796", 
+            "description":"1950's-style joint for breakfast plates, sandwiches & other diner staples, plus cocktails & shakes.",
+            "image":"https://images.unsplash.com/photo-1569159316006-900e88b5dbc2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1454&q=80"
+        },
+        {
+            "name":"Phil's", 
+            "directions":"https://www.google.ca/maps/place/2312+16+Ave+NW,+Calgary,+AB+T2M+0M5/@51.0673933,-114.1161962,17z/data=!3m1!4b1!4m5!3m4!1s0x53716fa33cc0ff77:0xe39d127807223fab!8m2!3d51.0673899!4d-114.1140075",
+            "description":"Diner favourites from breakfast plates to burgers dished up in a roomy, relaxed environment.",
+            "image":"https://images.unsplash.com/photo-1600326145552-327f74b9c189?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80"
+        },
+        {
+            "name":"ZCREW", 
+            "directions":"https://www.google.ca/maps/place/401+11+Ave+SE,+Calgary,+AB+T2G+0Y5/@51.0420396,-114.0578245,17z/data=!3m1!4b1!4m5!3m4!1s0x5371700111540c19:0xa2e79deb4579d765!8m2!3d51.0420362!4d-114.0556358",
+            "description":"Coffee, tea & brunch, including grab-&-go sandwiches, served in a laid-back, modern environment.",
+            "image":"https://images.unsplash.com/photo-1592887777607-670896dcfe87?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+        },
+        {
+            "name":"Cora",
+            "directions":"https://www.google.ca/maps/place/420+Brentwood+Wy+NW,+Calgary,+AB+T2L+1K8/@51.0863646,-114.1299329,17z/data=!3m1!4b1!4m5!3m4!1s0x53716f12bc65a245:0x4e206103e74018a6!8m2!3d51.0863613!4d-114.1277442",
+            "description":"Serves colourful dishes filled with creativity to create a memorable nutritious experience each morning in a warm family atmosphere.",
+            "image":"https://images.unsplash.com/photo-1459789034005-ba29c5783491?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1238&q=80"
+        }
     ]
 
     choice = restaurants[Math.floor(Math.random() * restaurants.length)]
